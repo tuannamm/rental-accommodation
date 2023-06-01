@@ -1,7 +1,7 @@
 import express from "express";
 require("dotenv").config();
 import cors from "cors";
-const bodyParser = require("body-parser");
+import bodyParser from "body-parser";
 
 import initRoutes from "./src/routes";
 import connectDatabase from "./src/config/connectDatabase";
@@ -9,7 +9,14 @@ import connectDatabase from "./src/config/connectDatabase";
 const app = express();
 const port = process.env.PORT || 8000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.json());
+
 initRoutes(app);
+
+connectDatabase();
 
 app.use(
   cors({
@@ -17,18 +24,6 @@ app.use(
     method: ["POST", "PUT", "GET", "DELETE"],
   })
 );
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(bodyParser.json());
-
-app.use(express.json());
-
-app.use("/", (req, res) => {
-  res.send("Hello World");
-});
-
-connectDatabase();
 
 const listener = app.listen(port, () => {
   console.log(`Server is running on port ${listener.address().port}`);
