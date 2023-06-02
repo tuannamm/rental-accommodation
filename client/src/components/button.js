@@ -5,7 +5,7 @@ const Button = ({ text, textColor, bgColor, icon, onClick, fullWidth }) => {
     <button
       type="button"
       className={`py-2 px-4 ${textColor} ${bgColor} ${fullWidth && "w-full"}
-      outline-none rounded-md hover:underline flex items-center gap-1 `}
+      outline-none rounded-md hover:underline flex items-center gap-1 justify-center`}
       onClick={onClick}
     >
       <span>{text}</span>
