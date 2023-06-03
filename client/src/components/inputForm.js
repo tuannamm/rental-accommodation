@@ -14,7 +14,7 @@ const InputForm = ({
         {label}
       </label>
       <input
-        type="text"
+        type={type || "text"}
         id="phone"
         className="outline-none bg-[#e8f0fe] p-2 rounded-md w-full"
         value={value}

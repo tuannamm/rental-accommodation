@@ -4,6 +4,7 @@ const initState = {
   isLoggedIn: false,
   accessToken: null,
   msg: "",
+  update: false,
 };
 
 const authReducer = (state = initState, action) => {
@@ -20,6 +21,7 @@ const authReducer = (state = initState, action) => {
         isLoggedIn: false,
         msg: action.data,
         accessToken: null,
+        update: !state.update,
       };
     case actionTypes.LOGIN_SUCCESS:
       return {
@@ -33,6 +35,7 @@ const authReducer = (state = initState, action) => {
         isLoggedIn: false,
         msg: action.data,
         accessToken: null,
+        update: !state.update,
       };
     case actionTypes.LOGOUT:
       return {

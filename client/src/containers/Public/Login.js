@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { InputForm, Button } from "../../components";
+import Swal from "sweetalert2";
 
 import * as actions from "../../store/actions";
 
@@ -10,7 +11,7 @@ const Login = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, msg, update } = useSelector((state) => state.auth);
   const [invalidField, setInvalidField] = useState([]);
   const [isRegister, setIsRegister] = useState(
     location.state?.flag === "register" ? true : false
@@ -24,11 +25,20 @@ const Login = () => {
 
   useEffect(() => {
     setIsRegister(location.state?.flag === "register" ? true : false);
+    setPayload({
+      name: "",
+      phone: "",
+      password: "",
+    });
   }, [location.state?.flag]);
 
   useEffect(() => {
     isLoggedIn && navigate("/");
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    msg && Swal.fire("Oops !", msg, "error");
+  }, [msg, update]);
 
   const validate = (payload) => {
     let invalids = 0;
@@ -116,7 +126,7 @@ const Login = () => {
           invalidField={invalidField}
         />
         <InputForm
-          type={"password"}
+          type="password"
           label={"MẬT KHẨU"}
           value={payload.password}
           setValue={setPayload}
