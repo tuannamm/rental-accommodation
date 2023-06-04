@@ -6,6 +6,7 @@ import { InputForm, Button } from "../../components";
 import Swal from "sweetalert2";
 
 import * as actions from "../../store/actions";
+import { constants } from "../../utils/constants";
 
 const Login = () => {
   const location = useLocation();
@@ -110,7 +111,7 @@ const Login = () => {
         {isRegister && (
           <InputForm
             type="name"
-            label={"HỌ VÀ TÊN"}
+            label={constants.FULLNAME}
             value={payload.name}
             setValue={setPayload}
             setInvalidField={setInvalidField}
@@ -119,7 +120,7 @@ const Login = () => {
         )}
         <InputForm
           type="phone"
-          label={"SỐ ĐIỆN THOẠI"}
+          label={constants.PHONE}
           value={payload.phone}
           setValue={setPayload}
           setInvalidField={setInvalidField}
@@ -127,14 +128,14 @@ const Login = () => {
         />
         <InputForm
           type="password"
-          label={"MẬT KHẨU"}
+          label={constants.PASSWORD}
           value={payload.password}
           setValue={setPayload}
           setInvalidField={setInvalidField}
           invalidField={invalidField}
         />
         <Button
-          text={isRegister ? "Đăng ký" : "Đăng nhập"}
+          text={isRegister ? `${constants.REGISTER}` : `${constants.SIGNIN}`}
           bgColor="bg-secondary1"
           textColor="text-white"
           fullWidth
