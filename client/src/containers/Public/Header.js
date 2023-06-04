@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/logowithoutbg.png";
 import { Button } from "../../components";
 import icons from "../../utils/icons";
-import { path } from "../../utils/constant";
+import { path } from "../../utils/path";
 import * as actions from "../../store/actions";
 
 const { AiOutlinePlusCircle } = icons;
@@ -20,8 +20,8 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-1100">
-      <div className="w-1100 flex items-center justify-between">
+    <div className="w-3/5">
+      <div className="max-w-1100 flex items-center justify-between">
         <Link to="/">
           <img
             src={logo}

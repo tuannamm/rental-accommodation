@@ -1,7 +1,7 @@
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { path } from "./utils/constant";
+import { path } from "./utils/path";
 import {
   Home,
   Login,
