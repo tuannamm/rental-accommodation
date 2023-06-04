@@ -3,14 +3,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { InputForm, Button } from "../../components";
+import Swal from "sweetalert2";
 
 import * as actions from "../../store/actions";
+import { constants } from "../../utils/constants";
 
 const Login = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, msg, update } = useSelector((state) => state.auth);
   const [invalidField, setInvalidField] = useState([]);
   const [isRegister, setIsRegister] = useState(
     location.state?.flag === "register" ? true : false
@@ -24,11 +26,20 @@ const Login = () => {
 
   useEffect(() => {
     setIsRegister(location.state?.flag === "register" ? true : false);
+    setPayload({
+      name: "",
+      phone: "",
+      password: "",
+    });
   }, [location.state?.flag]);
 
   useEffect(() => {
     isLoggedIn && navigate("/");
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    msg && Swal.fire("Oops !", msg, "error");
+  }, [msg, update]);
 
   const validate = (payload) => {
     let invalids = 0;
@@ -100,7 +111,7 @@ const Login = () => {
         {isRegister && (
           <InputForm
             type="name"
-            label={"HỌ VÀ TÊN"}
+            label={constants.FULLNAME}
             value={payload.name}
             setValue={setPayload}
             setInvalidField={setInvalidField}
@@ -109,22 +120,22 @@ const Login = () => {
         )}
         <InputForm
           type="phone"
-          label={"SỐ ĐIỆN THOẠI"}
+          label={constants.PHONE}
           value={payload.phone}
           setValue={setPayload}
           setInvalidField={setInvalidField}
           invalidField={invalidField}
         />
         <InputForm
-          type={"password"}
-          label={"MẬT KHẨU"}
+          type="password"
+          label={constants.PASSWORD}
           value={payload.password}
           setValue={setPayload}
           setInvalidField={setInvalidField}
           invalidField={invalidField}
         />
         <Button
-          text={isRegister ? "Đăng ký" : "Đăng nhập"}
+          text={isRegister ? `${constants.REGISTER}` : `${constants.SIGNIN}`}
           bgColor="bg-secondary1"
           textColor="text-white"
           fullWidth
