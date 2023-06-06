@@ -15,3 +15,5 @@ export { default as RentalHouse } from "./RentalHouse";
 export { default as RentalSpace } from "./RentalSpace";
 
 export { default as Homepage } from "./Homepage";
+
+export { default as Search } from "./Search";
