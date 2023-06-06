@@ -2,6 +2,7 @@ import React from "react";
 
 import { SearchBar } from "../../components";
 import icons from "../../utils/icons";
+import { constants } from "../../utils/constants";
 
 const {
   BsChevronRight,
@@ -41,7 +42,8 @@ const Search = () => {
         type="button"
         className="flex gap-2 items-center content-center justify-center font-medium text-white outline-none py-2 px-4 w-full rounded-md bg-[#3961fb] text-[11.5px]"
       >
-        {<IoSearchOutline />}Tìm kiếm
+        {<IoSearchOutline />}
+        {constants.FIND}
       </button>
     </div>
   );
