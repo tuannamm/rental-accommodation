@@ -12,14 +12,14 @@ import chothuephongtro from "../../data/chothuephongtro.json";
 const hashPassword = (password) =>
   bcrypt.hashSync(password, bcrypt.genSaltSync(12));
 
-const dataBody = chothuephongtro.body;
+const dataBody = chothuecanho.body;
 
 export const insertService = () =>
   new Promise((resolve, reject) => {
     try {
       dataBody.forEach(async (item) => {
         let postId = uuidv4();
-        let labelCode = generateCode(4);
+        let labelCode = generateCode(item?.headerData?.class?.classType);
         let attributesId = uuidv4();
         let userId = uuidv4();
         let overviewId = uuidv4();
@@ -52,9 +52,12 @@ export const insertService = () =>
           image: JSON.stringify(item?.images),
         });
         // label db
-        await db.Label.create({
-          code: labelCode,
-          value: item?.headerData?.class?.classType,
+        await db.Label.findOrCreate({
+          where: { code: labelCode },
+          defaults: {
+            code: labelCode,
+            value: item?.headerData?.class?.classType,
+          },
         });
         // overview db
         await db.Overview.create({

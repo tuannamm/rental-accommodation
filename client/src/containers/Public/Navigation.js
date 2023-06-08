@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { apiGetCategories } from "../../services/category";
-import formatVietnameseToString from "../../utils/formatVNeseToString";
+import formatVietnameseToString from "../../utils/common/formatVNeseToString";
 import { constants } from "../../utils/constants";
 
 // const nav = [
