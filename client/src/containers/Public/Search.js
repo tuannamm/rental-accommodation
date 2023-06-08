@@ -16,7 +16,7 @@ const {
 
 const Search = () => {
   return (
-    <div className="p-[10px] bg-[#febb02] rounded-lg flex item-center justify-around gap-2 rounded-lg flex-col lg:flex-row flex">
+    <div className="p-[10px] w-3/5 bg-[#febb02] rounded-lg flex item-center justify-around gap-2 rounded-lg flex-col lg:flex-row flex my-3">
       <SearchBar
         iconFirst={<MdApartment color="rgb(156,163,175)" />}
         text={"Phòng trọ, nhà trọ"}
