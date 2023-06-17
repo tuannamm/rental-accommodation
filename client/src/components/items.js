@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 
 import icons from "../utils/icons";
 
@@ -12,29 +12,11 @@ const images = [
 const { GrStar, RiHeartFill, RiHeartLine, BsBookmarkStarFill } = icons;
 
 const Items = () => {
+  const [isHoverHeart, setIsHoverHeart] = useState(false);
+
   return (
     <div className="w-full flex border-t border-orange-600 p-4">
-      <div className="w-2/5 flex flex-wrap gap-[2px] items-center">
-        {/* <img
-          src={images[0]}
-          alt="demo"
-          className="w-[140px] h-[120px] object-cover"
-        />
-        <img
-          src={images[1]}
-          alt="demo"
-          className="w-[140px] h-[120px] object-cover"
-        />
-        <img
-          src={images[2]}
-          alt="demo"
-          className="w-[140px] h-[120px] object-cover"
-        />
-        <img
-          src={images[3]}
-          alt="demo"
-          className="w-[140px] h-[120px] object-cover"
-        /> */}
+      <div className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">
         <div className="flex gap-[1px]">
           <img
             src={images[0]}
@@ -58,6 +40,20 @@ const Items = () => {
             alt="demo"
             className="w-[110px] h-[110px] object-cover"
           />
+          <span className="bg-overlay-70 text-white px-2 rounded-md absolute left-2 bottom-1">
+            4 ảnh
+          </span>
+          <span
+            className="text-white absolute right-1 bottom-2"
+            onMouseEnter={() => setIsHoverHeart(true)}
+            onMouseLeave={() => setIsHoverHeart(false)}
+          >
+            {isHoverHeart ? (
+              <RiHeartFill size={26} color="red" />
+            ) : (
+              <RiHeartLine size={26} />
+            )}
+          </span>
         </div>
       </div>
       <div className="w-3/5 ml-5">
