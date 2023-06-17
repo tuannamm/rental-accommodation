@@ -23,7 +23,7 @@ export const getPostsService = () =>
       });
       resolve({
         err: response ? 0 : 1,
-        msg: response ? "Success" : "Failed to get posts",
+        msg: response ? "Get all posts success" : "Failed to get posts",
         data: response,
       });
     } catch (error) {

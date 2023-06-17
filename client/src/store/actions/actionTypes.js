@@ -4,6 +4,8 @@ const actionTypes = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
   REGISTER_FAILED: "REGISTER_FAILED",
   LOGOUT: "LOGOUT",
+
+  GET_POSTS: "GET_POSTS",
 };
 
 export default actionTypes;
