@@ -4,7 +4,6 @@ import { apiRegister, apiLogin } from "../../services/auth";
 export const register = (payload) => async (dispatch) => {
   try {
     const response = await apiRegister(payload);
-    console.log("response: ", response);
     if (response.err === 0) {
       dispatch({
         type: actionTypes.REGISTER_SUCCESS,

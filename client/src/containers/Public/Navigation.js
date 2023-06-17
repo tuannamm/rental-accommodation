@@ -30,7 +30,7 @@ const Navigation = () => {
     fetchCategories();
   }, []);
   return (
-    <div className="w-screen h-[40px] flex justify-center items-center  bg-secondary1 text-white">
+    <div className="w-full h-[40px] flex justify-center items-center  bg-secondary1 text-white">
       <div className="w-3/5 h-full flex items-center text-sm font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? active : notActive)}
